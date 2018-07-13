@@ -83,7 +83,8 @@ function editBook (bookId) {
         getAndUpdateBooks()
       })
   })
-  row.html($form)
+
+  $('.container').append($form)
 }
 
 $(document).ready(function () {
