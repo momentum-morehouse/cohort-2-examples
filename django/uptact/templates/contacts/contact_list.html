@@ -1,15 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Uptact</title>
-</head>
-<body>
-  <ul>
-    {% for contact in contacts %}
-    <li>{{ contact.name }}</li>
-    {% endfor %}
-  </ul>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex flex-wrap">
+  {% for contact in contacts %}
+  <div class="w-33 pa3">
+    <h2>{{ contact.name }}</h2>
+
+    <div class="flex">
+      <div class="pr2"><i class="icofont-location-pin"></i></div>
+      <div>
+        {{ contact.address_1 }}<br />
+        {% if contact.address_2 %}
+          {{ contact.address_2 }}<br />
+        {% endif %}
+        {{ contact.city }}, {{ contact.state }} {{ contact.zip_code }}
+      </div>
+    </div>
+
+    {% if contact.phone_number %}
+    <div class="flex">
+      <div class="pr2"><i class="icofont-phone"></i></div>
+      <div>{{ contact.phone_number }}</div>
+    </div>
+    {% endif %}
+
+    {% if contact.email %}
+    <div class="flex">
+      <div class="pr2"><i class="icofont-ui-email"></i></div>
+      <div>{{ contact.email }}</div>
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>  
+{% endblock %}
