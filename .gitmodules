@@ -1,0 +1,3 @@
+[submodule "amy_examples"]
+	path = amy_examples
+	url = https://github.com/momentum-team-2/examples.git
